@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # react-native-airbnb-clone
 AirBnB mobile app clone using React Native & Redux
 
@@ -22,6 +23,8 @@ AirBnB mobile app clone using React Native & Redux
 </table>
 =======
 >>>>>>> 1b4445be66053437066b87b7f86f7bc2aef30076
+=======
+>>>>>>> 1b4445be66053437066b87b7f86f7bc2aef30076
 
 ## How to use
 - Clone
@@ -29,6 +32,7 @@ AirBnB mobile app clone using React Native & Redux
 - Run on IOS or Android projects in emulator
 
 ## Login details
+<<<<<<< HEAD
 <<<<<<< HEAD
 - email: web@imandy.ie
 - password: 12345
@@ -42,6 +46,10 @@ AirBnB mobile app clone using React Native & Redux
 - redux
 - redux-logger
 - redux-thunk
+=======
+- email: web@
+- password: 12345
+>>>>>>> 1b4445be66053437066b87b7f86f7bc2aef30076
 =======
 - email: web@
 - password: 12345
