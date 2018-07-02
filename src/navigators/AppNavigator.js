@@ -8,6 +8,10 @@ import LoggedIn from '../screens/LoggedIn';
 import LogIn from '../screens/LogIn';
 import ForgotPassword from '../screens/ForgotPassword';
 import TurnOnNotifications from '../screens/TurnOnNotifications';
+import TermsConditions from '../screens/TermsConditions';
+import RegisterName from '../screens/RegisterName';
+import ExploreContainer from '../containers/ExploreContainer';
+
 
 export const AppNavigator = StackNavigator({
   LoggedOut: { screen: LoggedOut },
@@ -15,6 +19,9 @@ export const AppNavigator = StackNavigator({
   LogIn: { screen: LogIn },
   ForgotPassword: { screen: ForgotPassword },
   TurnOnNotifications: { screen: TurnOnNotifications },
+  TermsConditions: { screen: TermsConditions },
+  RegisterName: { screen: RegisterName },
+  ExploreContainer: {screen: ExploreContainer},
 });
 
 const AppWithNavigationState = ({ dispatch, nav, listener }) => (

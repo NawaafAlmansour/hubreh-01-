@@ -13,9 +13,12 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../styles/colors';
 import { transparentHeaderStyle } from '../styles/navigation';
+import Notification from '../components/Notification';
 import RoundedButton from '../components/buttons/RoundedButton';
 import NavBarButton from '../components/buttons/NavBarButton';
 import iPhoneSize from '../helpers/utils';
+import { Button } from 'react-native';
+
 
 const size = iPhoneSize();
 let termsTextSize = 13;
@@ -29,7 +32,8 @@ if (size === 'small') {
 export default class LoggedOut extends Component {
 
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <NavBarButton handleButtonPress={() => navigation.navigate('LogIn')} location="right" color={colors.white} text="تسجيل الدخول" />,
+    headerRight: <NavBarButton handleButtonPress={() =>
+      navigation.navigate('LogIn')} location="left" color={colors.white} text=" تسجيل الدخول   " />,
     headerStyle: transparentHeaderStyle,
     headerTintColor: colors.white,
   });
@@ -65,12 +69,12 @@ export default class LoggedOut extends Component {
           <RoundedButton
             text="انشاء حساب جديد"
             textColor={colors.white}
-            handleOnPress={this.onCreateAccountPress}
+            handleOnPress={() => this.props.navigation.navigate('RegisterName')}
           />
           <RoundedButton
             text="تخطى التسجيل"
             textColor={colors.white}
-            handleOnPress={this.onCreateAccountPress}
+            handleOnPress={() => this.props.navigation.navigate('ExploreContainer')}
           />
 
           <TouchableHighlight
@@ -83,7 +87,10 @@ export default class LoggedOut extends Component {
          <View style={styles.termsAndConditions}>
            <Text style={styles.termsText}> يمكنك اختيار المتابعة أو إنشاء حساب أو المزيد </Text>
            <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}> الشروط ولاحكام </Text>
+             <Button style={styles.TButton}
+               title="الشروط ولاحكام "
+               onPress={() => this.props.navigation.navigate('TermsConditions')}
+             />
            </TouchableHighlight>
            <Text style={styles.termsText}> أوافق على جميع </Text>
            <Text style={styles.termsText}> من الخيارات ,  </Text>
@@ -149,14 +156,16 @@ const styles = StyleSheet.create({
       alignItems: 'center',
   },
   termsText: {
-
     color: colors.white,
     fontSize: termsTextSize,
     fontWeight: '600',
     textAlign: 'right',
   },
+  TButton: {
+    color: colors.white,
+    fontSize: termsTextSize,
+  },
   linkButton: {
-
     borderBottomWidth: 1,
     borderBottomColor: colors.white,
     textAlign: 'right',

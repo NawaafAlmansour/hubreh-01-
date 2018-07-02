@@ -18,7 +18,8 @@ import Loader from '../components/Loader';
 import iPhoneSize from '../helpers/utils';
 
 const size = iPhoneSize();
-const headingTextSize = 30;
+let termsTextSize = 13;
+let headingTextSize = 30;
 
 if (size === 'small') {
   headingTextSize = 26;
@@ -27,11 +28,15 @@ if (size === 'small') {
 export default class ForgotPassword extends Component {
 
   static navigationOptions = ({ navigation }) => ({
-    headerLeft: <NavBarButton
-      handleButtonPress={() => navigation.goBack()}
-      location="left"
-      icon={<Icon name="angle-left" color={colors.white} size={30} />}
-    />,
+     headerRight: <NavBarButton
+       handleButtonPress={() =>  navigation.navigate('LogIn')}
+       location="left"
+       icon={<Icon name="angle-right" color={colors.white}  size={30} />}
+     />,
+     headerLeft: <NavBarButton
+       location='right'
+      color={colors.white}
+     />,
     headerStyle: transparentHeaderStyle,
     headerTintColor: colors.white,
   });
@@ -67,7 +72,7 @@ export default class ForgotPassword extends Component {
   goToNextStep() {
     this.setState({ loadingVisible: true });
     setTimeout(() => {
-      if (this.state.emailAddress === 'wrong@email.com') {
+      if (this.state.emailAddress === 'nawaf.a@email.com') {
         this.setState({
           loadingVisible: false,
           formValid: false,

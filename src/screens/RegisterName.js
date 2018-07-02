@@ -27,7 +27,7 @@ const headingTextSize = 30;
 if (size === 'small') {
   headingTextSize = 26;
 }
-class LogIn extends Component {
+class RegisterName extends Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerRight: <NavBarButton
@@ -36,11 +36,9 @@ class LogIn extends Component {
       icon={<Icon name="angle-right" color={colors.white} size={30} />}
     />,
      headerLeft: <NavBarButton
-      handleButtonPress={() => navigation.navigate('ForgotPassword')}
-      location='right'
+       location='right'
       color={colors.white}
-      text="نسيت الرقم السري"
-    />,
+     />,
 
     headerStyle: transparentHeaderStyle,
     headerTintColor: colors.white,
@@ -131,9 +129,9 @@ class LogIn extends Component {
        >
         <View style={styles.scrollViewWrapper}>
           <ScrollView style={styles.scrollView}>
-            <Text style={styles.loginHeader}>تسجيل الدخول</Text>
+            <Text style={styles.loginHeader}> ماهــو اسمك ؟ </Text>
             <InputField
-              labelText="رقم الجوال"
+              labelText="الاسم الاول "
               labelTextSize={14}
               labelColor={colors.white}
               textColor={colors.white}
@@ -145,7 +143,7 @@ class LogIn extends Component {
               autoFocus={true}
             />
             <InputField
-              labelText="الرقم السري"
+              labelText="الاسم الاخير "
               labelTextSize={14}
               labelColor={colors.white}
               textColor={colors.white}
@@ -201,7 +199,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   loginHeader: {
+    fontFamily: 'Geeza Pro',
     fontSize: headingTextSize,
+    fontWeight: 'bold',
     color: colors.white,
     fontWeight: '300',
     marginBottom: 40,
@@ -226,4 +226,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(ActionCreators, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterName);
