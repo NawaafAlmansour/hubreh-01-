@@ -13,13 +13,13 @@ export default class NoResults extends Component {
   	return (
   	  <View>
   	    <ScrollView style={styles.scrollView}>
-  	      <Text style={styles.heading}>Saved</Text>
-  	      <Text style={styles.description}>Not every day is filled with adventures, but you can start planning for the next one.</Text>
-  	      <Text style={styles.description}>Tap the heart on any home to start saving your favorites here.</Text>
+  	      <Text style={styles.heading}>الفضلة </Text>
+  	      <Text style={styles.description}>ليس كل يوم مليء بالمغامرات ، ولكن يمكنك البدء في التخطيط للمغامرة التالية. </Text>
+  	      <Text style={styles.description}>اضغط على القلب على أي منزل لبدء حفظ المفضلة هنا. </Text>
   	    </ScrollView>
   	    <View style={styles.footer}>
   	      <TouchableHighlight style={styles.findHomesButton}>
-  	        <Text style={styles.findHomesButtonText}>Find homes</Text>
+  	        <Text style={styles.findHomesButtonText}>البحث عن منازل </Text>
   	      </TouchableHighlight>
   	    </View>
   	  </View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     fontWeight: '600',
+    textAlign: 'right',
     marginBottom: 40,
     color: colors.gray04,
     marginTop: 70,
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
+    textAlign: 'right',
     lineHeight: 24,
     color: colors.gray04,
     paddingLeft: 20,

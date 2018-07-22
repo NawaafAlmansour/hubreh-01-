@@ -34,7 +34,7 @@ export default class TermsConditions extends Component {
        icon={<Icon name="times" color={colors.black}  size={30} />}
      />,
     headerStyle: transparentHeaderStyle,
-    headerTintColor: colors.white,
+    headerTintColor: colors.black,
   });
 
   render() {

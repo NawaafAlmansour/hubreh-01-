@@ -10,7 +10,14 @@ import ForgotPassword from '../screens/ForgotPassword';
 import TurnOnNotifications from '../screens/TurnOnNotifications';
 import TermsConditions from '../screens/TermsConditions';
 import RegisterName from '../screens/RegisterName';
+import RegisterEmail from '../screens/RegisterEmail';
+import RegisterPhone from '../screens/RegisterPhone';
+import OtherOptions from '../screens/OtherOptions';
+import Search  from '../containers/Search';
 import ExploreContainer from '../containers/ExploreContainer';
+import SavedContainer from '../containers/SavedContainer';
+
+
 
 
 export const AppNavigator = StackNavigator({
@@ -21,7 +28,12 @@ export const AppNavigator = StackNavigator({
   TurnOnNotifications: { screen: TurnOnNotifications },
   TermsConditions: { screen: TermsConditions },
   RegisterName: { screen: RegisterName },
+  RegisterEmail: { screen: RegisterEmail },
+  RegisterPhone: { screen: RegisterPhone },
   ExploreContainer: {screen: ExploreContainer},
+  SavedContainer : {screen: SavedContainer},
+  OtherOptions: { screen : OtherOptions },
+  Search : { screen : Search },
 });
 
 const AppWithNavigationState = ({ dispatch, nav, listener }) => (

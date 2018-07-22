@@ -7,8 +7,10 @@ import {
   Text,
   ScrollView,
   StyleSheet,
+  Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../redux/actions';
@@ -46,6 +48,7 @@ class LogIn extends Component {
     headerTintColor: colors.white,
   });
 
+ 
   constructor(props) {
     super(props);
     this.state = {

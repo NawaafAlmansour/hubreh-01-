@@ -5,26 +5,33 @@ import {
   Text,
   ScrollView,
   StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../redux/actions';
 import Icon from 'react-native-vector-icons/Ionicons';
 import SearchBar from '../components/SearchBar';
+import DateBar from '../components/DateBar';
+import TypePlace from '../components/TypePlace';
 import Categories from '../components/explore/Categories';
 import Listings from '../components/explore/Listings';
 import colors from '../styles/colors';
 import categoriesList from '../data/categories';
+import RoundedButton from '../components/buttons/RoundedButton';
 import listings from '../data/listings';
+import Search from '../containers/Search';
+//InboxContainer
 
-export default class InboxContainer extends Component {
+ class ExploreContainer extends Component {
+
   static navigationOptions = {
     header: null,
     tabBarLabel: 'استكشف',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name="ios-search"
-        size={22}
-        color={tintColor}
-      />
-    ),
+   tabBarIcon: ({ tintColor ,focused }) => (
+    <Icon  name="ios-search" size={26} color={ tintColor } />
+   ),
   };
 
   constructor(props) {
@@ -40,6 +47,7 @@ export default class InboxContainer extends Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps);
   }
+
 
   handleAddToFav(listing) {
     const { navigate } = this.props.navigation;
@@ -79,6 +87,7 @@ export default class InboxContainer extends Component {
             handleAddToFav={this.handleAddToFav}
             favouriteListings={this.state.favouriteListings}
           />
+
         </View>
       );
     });
@@ -87,12 +96,30 @@ export default class InboxContainer extends Component {
   render() {
     return (
       <View style={styles.wrapper}>
-        <SearchBar />
+
+         <SearchBar
+          handleButtonPress={() => this.props.navigation.navigate('Search')}
+        />
+
+        <DateBar
+         handleButtonPress={() => this.props.navigation.navigate('ExploreContainer')}
+       />
+       <TypePlace
+        handleButtonPress={() => this.props.navigation.navigate('TypeList')}
+      />
+
         <ScrollView
           style={styles.scrollview}
           contentContainerStyle={styles.scrollViewContent}
         >
-          <Text style={styles.heading}> جديد </Text>
+
+        <RoundedButton
+          text="حساب جديد"
+          textColor={colors.gray04}
+          handleOnPress={() => this.props.navigation.navigate('ViewBuilding')}
+        />
+
+          <Text style={styles.heading}> استكشف </Text>
           <View style={styles.categories}>
             <Categories categories={categoriesList} />
           </View>
@@ -106,7 +133,7 @@ export default class InboxContainer extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.gray07,
   },
   scrollview: {
     paddingTop: 100,
@@ -125,3 +152,16 @@ const styles = StyleSheet.create({
     color: colors.gray04,
   }
 });
+
+
+const mapStateToProps = (state) => {
+  return {
+    loggedInStatus: state.loggedInStatus,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(ActionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExploreContainer);

@@ -9,13 +9,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import NoResults from '../components/saved/NoResults';
 import colors from '../styles/colors';
 
-export default class InboxContainer extends Component {
+export default class SavedContainer extends Component {
   static navigationOptions = {
     tabBarLabel: 'مفضلة',
     tabBarIcon: ({ tintColor }) => (
       <Icon
         name="ios-heart-outline"
-        size={22}
+        size={26}
         color={tintColor}
       />
     ),

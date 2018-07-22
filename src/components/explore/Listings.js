@@ -26,7 +26,7 @@ export default class Listings extends Component {
   	const { listings, showAddToFav, handleAddToFav, favouriteListings } = this.props;
     return listings.map((listing, index) => {
       return (
-        <TouchableHighlight
+        <TouchableOpacity
           style={styles.card}
           key={`listing-${index}`}
         >
@@ -62,7 +62,7 @@ export default class Listings extends Component {
               />
             : null}
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     });
   }
@@ -75,7 +75,7 @@ export default class Listings extends Component {
   	    <View style={styles.titleWrapper}>
   	      <Text style={[titleStyle, styles.title]}>{title}</Text>
   	      <TouchableOpacity style={styles.seeAllBtn}>
-  	        <Text style={styles.seeAllBtnText}>زود </Text>
+  	        <Text style={styles.seeAllBtnText}>المزيد </Text>
   	        <Icon
   	          name='angle-right'
   	          size={18}

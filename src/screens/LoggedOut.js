@@ -34,6 +34,10 @@ export default class LoggedOut extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerRight: <NavBarButton handleButtonPress={() =>
       navigation.navigate('LogIn')} location="left" color={colors.white} text=" تسجيل الدخول   " />,
+      headerLeft: <NavBarButton
+        location='right'
+
+     />,
     headerStyle: transparentHeaderStyle,
     headerTintColor: colors.white,
   });
@@ -79,23 +83,23 @@ export default class LoggedOut extends Component {
 
           <TouchableHighlight
             style={styles.moreOptionsButton}
-            onPress={this.onMoreOptionsPress}
+            onPress={() => this.props.navigation.navigate('OtherOptions')}
           >
             <Text style={styles.moreOptionsButtonText}>خيارات اخرى</Text>
           </TouchableHighlight>
 
          <View style={styles.termsAndConditions}>
            <Text style={styles.termsText}> يمكنك اختيار المتابعة أو إنشاء حساب أو المزيد </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Button style={styles.TButton}
-               title="الشروط ولاحكام "
-               onPress={() => this.props.navigation.navigate('TermsConditions')}
-             />
+
+           <TouchableHighlight style={styles.linkButton}
+             onPress={() => this.props.navigation.navigate('TermsConditions')}
+             >
+              <Text style={styles.TButton}> الشروط ولاحكام  </Text>
            </TouchableHighlight>
+
            <Text style={styles.termsText}> أوافق على جميع </Text>
            <Text style={styles.termsText}> من الخيارات ,  </Text>
            <Text style={styles.termsText}>ويمكنك الاطلاع عليها </Text>
-
          </View>
         </View>
       </ScrollView>
@@ -153,7 +157,7 @@ const styles = StyleSheet.create({
     marginLeft: 65,
     marginTop: 30,
     textAlign: 'right',
-      alignItems: 'center',
+    alignItems: 'center',
   },
   termsText: {
     color: colors.white,

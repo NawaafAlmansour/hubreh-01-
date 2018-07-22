@@ -14,7 +14,7 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../redux/actions';
 import colors from '../styles/colors';
 import { transparentHeaderStyle } from '../styles/navigation';
-import InputField from '../components/form/InputField';
+import InputfieldN from '../components/form/Inputfield_N';
 import NextArrowButton from '../components/buttons/NextArrowButton';
 import Notification from '../components/Notification';
 import Loader from '../components/Loader';
@@ -48,77 +48,76 @@ class RegisterName extends Component {
     super(props);
     this.state = {
       formValid: true,
-      validEmail: false,
-      emailAddress: '',
-      password: '',
-      validPassword: false,
+      validNameF: false,
+      namef: '',
+      names: '',
+      validNameS: false,
       loadingVisible: false,
     };
 
     this.handleCloseNotification = this.handleCloseNotification.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleNameFChange = this.handleNameFChange.bind(this);
     this.handleNextButton = this.handleNextButton.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleNameSChange = this.handleNameSChange.bind(this);
     this.toggleNextButtonState = this.toggleNextButtonState.bind(this);
   }
 
   handleNextButton() {
-  	this.setState({ loadingVisible: true });
-    const { navigate } = this.props.navigation;
-
+   this.props.navigation.navigate('RegisterEmail');
+  	//this.setState({ loadingVisible: true });
+  //  const { navigate } = this.props.navigation;
+/*
   	setTimeout(() => {
-      const { emailAddress, password } = this.state;
-      if (this.props.logIn(emailAddress, password)) {
+      const { namef, names } = this.state;
+      if (this.props.logIn(namef, names)) {
         this.setState({ formValid: true, loadingVisible: false });
         navigate('TurnOnNotifications');
       } else {
         this.setState({ formValid: false, loadingVisible: false });
       }
     }, 2000);
+    */
   }
 
   handleCloseNotification() {
     this.setState({ formValid: true });
   }
 
-  handleEmailChange(email) {
-    const emailCheckRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    this.setState({ emailAddress: email });
 
-    if (!this.state.validEmail) {
-      if (emailCheckRegex.test(email)) {
-      	this.setState({ validEmail: true });
-      }
-    } else {
-      if (!emailCheckRegex.test(email)) {
-      	this.setState({ validEmail: false });
-      }
+  handleNameSChange(name) {
+    this.setState({ name });
+
+
+      if (name.length > 4) {
+      	this.setState({ validNameS: true });
+    } else if (name <= 4) {
+      this.setState({ validNameS: false });
     }
   }
 
-  handlePasswordChange(password) {
-    this.setState({ password });
+  handleNameFChange(name) {
+    this.setState({ name });
 
-    if (!this.state.validPassword) {
-      if (password.length > 4) {
-      	//Password has to be at least 4 characters long
-      	this.setState({ validPassword: true });
-      }
-    } else if (password <= 4) {
-      this.setState({ validPassword: false });
+
+      if (name.length > 4) {
+
+      	this.setState({ validNameF: true });
+
+    } else if (name <= 4) {
+      this.setState({ validNameF: false });
     }
   }
 
   toggleNextButtonState() {
-    const { validEmail, validPassword } = this.state;
-    if (validEmail && validPassword) {
+    const { validNameF, validNameS } = this.state;
+    if (validNameF && validNameS) {
       return false;
     }
     return true;
   }
 
   render() {
-  	const { formValid, loadingVisible, validEmail, validPassword } = this.state;
+  	const { formValid, loadingVisible, validNameF, validNameS } = this.state;
   	const showNotification = formValid ? false : true;
   	const background = formValid ? colors.green01 : colors.darkOrange;
   	const notificationMarginTop = showNotification ? 10 : 0;
@@ -130,28 +129,28 @@ class RegisterName extends Component {
         <View style={styles.scrollViewWrapper}>
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}> ماهــو اسمك ؟ </Text>
-            <InputField
+            <InputfieldN
               labelText="الاسم الاول "
               labelTextSize={14}
               labelColor={colors.white}
               textColor={colors.white}
               borderBottomColor={colors.white}
-              inputType="email"
+              inputType="nameF"
               customStyle={{marginBottom: 30}}
-              onChangeText={this.handleEmailChange}
-              showCheckmark={validEmail}
+              onChangeText={this.handleNameFChange}
+              showCheckmark={validNameF}
               autoFocus={true}
             />
-            <InputField
+            <InputfieldN
               labelText="الاسم الاخير "
               labelTextSize={14}
               labelColor={colors.white}
               textColor={colors.white}
               borderBottomColor={colors.white}
-              inputType="password"
+              inputType="NameS"
               customStyle={{marginBottom: 30}}
-              onChangeText={this.handlePasswordChange}
-              showCheckmark={validPassword}
+              onChangeText={this.handleNameSChange}
+              showCheckmark={validNameS}
             />
           </ScrollView>
           <NextArrowButton

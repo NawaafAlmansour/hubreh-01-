@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 export default class InboxContainer extends Component {
   static navigationOptions = {
     tabBarLabel: 'حجوزاتي',
-    tabBarIcon: ({ tintColor }) => (
+    tabBarIcon: ({ tintColor}) => (
       <Icon
         name="ios-ionic"
         size={21}
